@@ -1,0 +1,84 @@
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>include </span><span style='color:#2a00ff; '>&lt;</span><span style='color:#3f3fbf; '>bits/stdc++.h</span><span style='color:#2a00ff; '>></span>
+
+<span style='color:#7f0055; font-weight:bold; '>using</span> <span style='color:#7f0055; font-weight:bold; '>namespace</span> std;
+
+<span style='color:#3f7f59; '>/* Template */</span>
+	
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> ll long long</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> foreach</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>it</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> S</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '> for</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>__typeof </span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>S</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>begin</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '> it </span><span style='color:#7f0055; '>=</span><span style='color:#7f0055; '> S</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>begin</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>;</span><span style='color:#7f0055; '> it </span><span style='color:#7f0055; '>!</span><span style='color:#7f0055; '>=</span><span style='color:#7f0055; '> S</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>end</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>;</span><span style='color:#7f0055; '> it</span><span style='color:#7f0055; '>+</span><span style='color:#7f0055; '>+</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> all</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>x</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '> x</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>begin</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> x</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>end</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> rall</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>x</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '> x</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>rbegin</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> x</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>rend</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> MN</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>a</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> b</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '> a </span><span style='color:#7f0055; '>=</span><span style='color:#7f0055; '> min </span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>a</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> b</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> MX</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>a</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> b</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '> a </span><span style='color:#7f0055; '>=</span><span style='color:#7f0055; '> max </span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>a</span><span style='color:#7f0055; '>,</span><span style='color:#7f0055; '> b</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> endl </span><span style='color:#2a00ff; '>'\n'</span>
+
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> fname </span><span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>"</span><span style='color:#7f0055; '> </span><span style='color:#3f7f59; '>// &lt;- Here</span>
+
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> nxtnt getNext </span><span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>int</span><span style='color:#7f0055; '>></span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> nxtll getNext </span><span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>ll</span><span style='color:#7f0055; '>></span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>)</span>
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> nxtcr getc</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>stdin</span><span style='color:#7f0055; '>)</span>
+	
+<span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>define</span><span style='color:#7f0055; '> _ ios_base </span><span style='color:#7f0055; '>:</span><span style='color:#7f0055; '>:</span><span style='color:#7f0055; '> sync_with_stdio</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>false</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>;</span><span style='color:#7f0055; '> cin</span><span style='color:#7f0055; '>.</span><span style='color:#7f0055; '>tie</span><span style='color:#7f0055; '>(</span><span style='color:#7f0055; '>NULL</span><span style='color:#7f0055; '>)</span><span style='color:#7f0055; '>;</span>
+
+<span style='color:#7f0055; font-weight:bold; '>template</span>&lt;<span style='color:#7f0055; font-weight:bold; '>typename</span> T><span style='color:#7f0055; font-weight:bold; '>inline</span> T getNext(){T s=1,x=0,c=nxtcr;<span style='color:#7f0055; font-weight:bold; '>for</span>(;c&lt;=32;c=nxtcr);<span style='color:#7f0055; font-weight:bold; '>if</span>(c==45)s=-1,c=nxtcr;<span style='color:#7f0055; font-weight:bold; '>for</span>(;48&lt;=c&amp;&amp;c&lt;=57;x=x*10+c-48,c=nxtcr);<span style='color:#7f0055; font-weight:bold; '>return</span> x*s;}
+<span style='color:#7f0055; font-weight:bold; '>const</span> <span style='color:#7f0055; font-weight:bold; '>double</span> eps = 1e-9;
+<span style='color:#7f0055; font-weight:bold; '>const</span> <span style='color:#7f0055; font-weight:bold; '>int</span> MOD = (<span style='color:#7f0055; font-weight:bold; '>int</span>)1e9 + 7;
+<span style='color:#7f0055; font-weight:bold; '>const</span> <span style='color:#7f0055; font-weight:bold; '>int</span> MAXN = (<span style='color:#7f0055; font-weight:bold; '>int</span>)(4e6) + 256;
+<span style='color:#7f0055; font-weight:bold; '>const</span> ll INFLL = 1e18;
+
+<span style='color:#7f0055; font-weight:bold; '>struct</span> item {
+	<span style='color:#7f0055; font-weight:bold; '>int</span> a, b;
+	item() {}
+	item(<span style='color:#7f0055; font-weight:bold; '>int</span> a, <span style='color:#7f0055; font-weight:bold; '>int</span> b) : a(a), b(b) {}
+};
+
+<span style='color:#7f0055; font-weight:bold; '>struct</span> cmp {
+	<span style='color:#7f0055; font-weight:bold; '>inline</span> <span style='color:#7f0055; font-weight:bold; '>bool</span> <span style='color:#7f0055; font-weight:bold; '>operator</span>() (<span style='color:#7f0055; font-weight:bold; '>const</span> item &amp;a, <span style='color:#7f0055; font-weight:bold; '>const</span> item &amp;b) <span style='color:#7f0055; font-weight:bold; '>const</span> {
+		<span style='color:#7f0055; font-weight:bold; '>if</span> (a.a == b.a)
+			<span style='color:#7f0055; font-weight:bold; '>return</span> a.b > b.b;
+		<span style='color:#7f0055; font-weight:bold; '>return</span> a.a > b.a;
+	}
+};
+
+<span style='color:#7f0055; font-weight:bold; '>struct</span> item_with_operator {
+	<span style='color:#7f0055; font-weight:bold; '>int</span> a, b;
+	item_with_operator() {}
+	item_with_operator(<span style='color:#7f0055; font-weight:bold; '>int</span> a, <span style='color:#7f0055; font-weight:bold; '>int</span> b) : a(a), b(b) {}
+	<span style='color:#7f0055; font-weight:bold; '>inline</span> <span style='color:#7f0055; font-weight:bold; '>bool</span> <span style='color:#7f0055; font-weight:bold; '>operator</span> &lt; (<span style='color:#7f0055; font-weight:bold; '>const</span> item_with_operator &amp;x) <span style='color:#7f0055; font-weight:bold; '>const</span> {
+		<span style='color:#7f0055; font-weight:bold; '>if</span> (a == x.a)
+			<span style='color:#7f0055; font-weight:bold; '>return</span> b &lt; x.b;
+		<span style='color:#7f0055; font-weight:bold; '>return</span> a &lt; x.a;
+	}
+};
+
+<span style='color:#7f0055; font-weight:bold; '>set</span> &lt;item, cmp> q;
+<span style='color:#7f0055; font-weight:bold; '>set</span> &lt;item_with_operator> w;
+
+<span style='color:#7f0055; font-weight:bold; '>int</span> <span style='color:#7f0055; font-weight:bold; '>main</span>() { <span style='color:#3f7f59; '>// _</span>
+<span style='color:#7f0055; '>	</span><span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>ifdef</span><span style='color:#7f0055; '> lcl</span>
+		<span style='color:#7f0055; font-weight:bold; '>freopen</span> (<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>.in</span><span style='color:#2a00ff; '>"</span>, <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>r</span><span style='color:#2a00ff; '>"</span>, <span style='color:#7f0055; font-weight:bold; '>stdin</span>);
+<span style='color:#7f0055; '>	</span><span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>else</span>
+		<span style='color:#3f7f59; '>// freopen(fname".in", "r", stdin);</span>
+		<span style='color:#3f7f59; '>// freopen(fname".out", "w", stdout);</span>
+<span style='color:#7f0055; '>	</span><span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>endif</span>
+
+	<span style='color:#7f0055; font-weight:bold; '>for</span> (<span style='color:#7f0055; font-weight:bold; '>int</span> i = 1; i &lt;= 10; ++i) {
+		q.insert(item(i * i, i * i - i));
+		w.insert(item_with_operator(i * i, i * i - i));
+	}
+
+	<span style='color:#7f0055; font-weight:bold; '>while</span> (!q.empty()) {
+		<span style='color:#7f0055; font-weight:bold; '>cout</span> &lt;&lt; q.begin() -> a &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '> </span><span style='color:#2a00ff; '>"</span> &lt;&lt; q.begin() -> b &lt;&lt; <span style='color:#7f0055; font-weight:bold; '>endl</span>;
+		q.erase(q.begin());
+	}
+
+	<span style='color:#7f0055; font-weight:bold; '>puts</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>/-/-/-/-/-/-/-/-/-/-/-/</span><span style='color:#2a00ff; '>"</span>);
+
+	<span style='color:#7f0055; font-weight:bold; '>while</span> (!w.empty()) {
+		<span style='color:#7f0055; font-weight:bold; '>cout</span> &lt;&lt; w.begin() -> a &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '> </span><span style='color:#2a00ff; '>"</span> &lt;&lt; w.begin() -> b &lt;&lt; <span style='color:#7f0055; font-weight:bold; '>endl</span>;
+		w.erase(w.begin());
+	}
+
+	<span style='color:#7f0055; font-weight:bold; '>return</span> 0;
+}
+</pre>

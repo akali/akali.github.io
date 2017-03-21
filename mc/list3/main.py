@@ -42,6 +42,9 @@ def getProblemName(p):
 def getProblemLink(p):
     return "<a href=\"http://acmp.ru/index.asp?main=task&id_task=" + p + "\">" + getProblemName(p) +"</a>" 
 
+def getLink(link, name):
+    return '<a href=\"%s\">%s</a>' % (link, str(name))
+
 problems = readList("problems.txt")
 ids = []
 # ids = readList("ids.txt")
@@ -49,7 +52,7 @@ ids = []
 # problems.pop()
 # ids.pop()
 
-table = [[getProblemLink(p) for p in problems]]
+table = [[getProblemLink(p) for p in problems], [getLink("http://informatics.mccme.ru/mod/statements/view.php?id=4252", "Задачи на scanline")], []]
 
 print "<meta charset=\"utf-8\">"
 print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"

@@ -76,7 +76,7 @@ for cur_id in ids:
     
     table.append(lst)
    
-table.append([getLink("informatics.mccme.ru/py-source/source/dir/240-430?cnt=100", "Mega Big Archive")])
+table.append([getLink("http://informatics.mccme.ru/py-source/source/dir/240-430?cnt=100", "Mega Big Archive")])
 
 print "\n".join(html_table(table))
 

@@ -52,15 +52,16 @@ ids = []
 # problems.pop()
 # ids.pop()
 
-table = [[getProblemLink(p) for p in problems], [getLink("http://informatics.mccme.ru/mod/statements/view.php?id=4252", "Задачи на scanline")], []]
+table = [[getProblemLink(p) for p in problems], [getLink("http://informatics.mccme.ru/mod/statements/view.php?id=4252", "Задачи на scanline")], 
+        ["Interesting problem on coordinates zipping: ", getProblemLink("632")]]
 
 print "<meta charset=\"utf-8\">"
-print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"
+# print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"
+
+# print table[1]
 
 # for p in problems:
 #    print "<a href=\"http://acmp.ru/index.asp?main=task&id_task= + p\">" + p + "</a>"
-
-print "<br>"
 
 # print problems
 
@@ -72,10 +73,12 @@ for cur_id in ids:
     for x in check(soup, cur_id, problems):
         lst.append(x)
     # print lst
+    
     table.append(lst)
    
-   # print " <br> ", getName(soup, cur_id), " ", check(soup, cur_id, problems)
+table.append([getLink("informatics.mccme.ru/py-source/source/dir/240-430?cnt=100", "Mega Big Archive")])
 
 print "\n".join(html_table(table))
 
 # print check("93028", ["15", "56", "697"])
+

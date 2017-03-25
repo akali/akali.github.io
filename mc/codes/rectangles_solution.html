@@ -1,0 +1,52 @@
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; '>#</span><span style='color:#7f0055; '>include </span><span style='color:#2a00ff; '>&lt;</span><span style='color:#3f3fbf; '>bits/stdc++.h</span><span style='color:#2a00ff; '>></span>
+
+<span style='color:#7f0055; font-weight:bold; '>using</span> <span style='color:#7f0055; font-weight:bold; '>namespace</span> std;
+
+<span style='color:#7f0055; font-weight:bold; '>struct</span> rectangle {
+	<span style='color:#7f0055; font-weight:bold; '>int</span> x, y, x2, y2;
+} r[500];
+
+<span style='color:#7f0055; font-weight:bold; '>vector</span> &lt;<span style='color:#7f0055; font-weight:bold; '>int</span>> x, y;
+
+<span style='color:#7f0055; font-weight:bold; '>inline</span> <span style='color:#7f0055; font-weight:bold; '>bool</span> check(rectangle a, rectangle b) {
+	<span style='color:#7f0055; font-weight:bold; '>return</span> (b.x &lt;= a.x &amp;&amp; a.x &lt;= b.x2) &amp;&amp;
+				 (b.x &lt;= a.x2 &amp;&amp; a.x2 &lt;= b.x2) &amp;&amp;
+				 (b.y &lt;= a.y &amp;&amp; a.y &lt;= b.y2) &amp;&amp;
+				 (b.y &lt;= a.y2 &amp;&amp; a.y2 &lt;= b.y2);
+}
+
+<span style='color:#7f0055; font-weight:bold; '>int</span> <span style='color:#7f0055; font-weight:bold; '>main</span>() {
+	<span style='color:#7f0055; font-weight:bold; '>int</span> n; <span style='color:#7f0055; font-weight:bold; '>scanf</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>%d</span><span style='color:#2a00ff; '>"</span>, &amp;n);
+	<span style='color:#7f0055; font-weight:bold; '>for</span> (<span style='color:#7f0055; font-weight:bold; '>int</span> i = 0; i &lt; n; ++i) {
+		<span style='color:#7f0055; font-weight:bold; '>scanf</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>%d</span><span style='color:#2a00ff; '>%d</span><span style='color:#2a00ff; '>%d</span><span style='color:#2a00ff; '>%d</span><span style='color:#2a00ff; '>"</span>, &amp;r[i].x, &amp;r[i].y, &amp;r[i].x2, &amp;r[i].y2);
+		<span style='color:#7f0055; font-weight:bold; '>if</span> (r[i].x > r[i].x2)
+			<span style='color:#7f0055; font-weight:bold; '>swap</span>(r[i].x, r[i].x2);
+		<span style='color:#7f0055; font-weight:bold; '>if</span> (r[i].y > r[i].y2)
+			<span style='color:#7f0055; font-weight:bold; '>swap</span>(r[i].y, r[i].y2);
+		x.push_back(r[i].x);
+		x.push_back(r[i].x2);
+		y.push_back(r[i].y);
+		y.push_back(r[i].y2);
+	}
+
+	<span style='color:#7f0055; font-weight:bold; '>sort</span>(x.begin(), x.end());
+	x.resize(<span style='color:#7f0055; font-weight:bold; '>unique</span>(x.begin(), x.end()) - x.begin());
+	
+	<span style='color:#7f0055; font-weight:bold; '>sort</span>(y.begin(), y.end());
+	y.resize(<span style='color:#7f0055; font-weight:bold; '>unique</span>(y.begin(), y.end()) - y.begin());
+
+	<span style='color:#7f0055; font-weight:bold; '>int</span> res = 0;
+
+	<span style='color:#7f0055; font-weight:bold; '>for</span> (<span style='color:#7f0055; font-weight:bold; '>int</span> i = 0; i + 1 &lt; (<span style='color:#7f0055; font-weight:bold; '>int</span>)x.size(); ++i)
+		<span style='color:#7f0055; font-weight:bold; '>for</span> (<span style='color:#7f0055; font-weight:bold; '>int</span> j = 0; j + 1 &lt; (<span style='color:#7f0055; font-weight:bold; '>int</span>)y.size(); ++j)
+			<span style='color:#7f0055; font-weight:bold; '>for</span> (<span style='color:#7f0055; font-weight:bold; '>int</span> k = 0; k &lt; n; ++k) {
+				<span style='color:#7f0055; font-weight:bold; '>if</span> (check(<span style='color:#ffffff; background:#dd0000; font-weight:bold; font-style:italic; '>{</span>x[i], y[j], x[i + 1], y[j + 1]<span style='color:#ffffff; background:#dd0000; font-weight:bold; font-style:italic; '>}</span>, r[k])) {
+					res += (x[i + 1] - x[i]) * (y[j + 1] - y[j]);
+					<span style='color:#7f0055; font-weight:bold; '>break</span>;
+				}
+			}
+	<span style='color:#7f0055; font-weight:bold; '>printf</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>%d</span><span style='color:#2a00ff; '>\n</span><span style='color:#2a00ff; '>"</span>, res);
+
+	<span style='color:#7f0055; font-weight:bold; '>return</span> 0;
+}
+</pre>

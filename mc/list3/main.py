@@ -45,6 +45,10 @@ def getProblemLink(p):
 def getLink(link, name):
     return '<a href=\"%s\">%s</a>' % (link, str(name))
 
+def getTag(tag, text):
+    tag = str(tag)
+    return '<%s>%s</%s>' % (tag, text, tag)
+
 problems = readList("problems.txt")
 ids = []
 # ids = readList("ids.txt")
@@ -56,6 +60,8 @@ table = [[getProblemLink(p) for p in problems], [getLink("http://informatics.mcc
         ["Interesting problem on coordinates zipping: ", getProblemLink("632")]]
 
 print "<meta charset=\"utf-8\">"
+print getTag('h1', 'Scanline')
+
 # print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"
 
 # print table[1]

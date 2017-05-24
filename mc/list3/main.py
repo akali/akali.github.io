@@ -4,6 +4,9 @@
 import urllib2
 from BeautifulSoup import BeautifulSoup
 
+print("Content-type: text/html")
+print()
+
 def printToFile(fname, arr):
     print >> open(fname, 'w'), len(arr), u' '.join(arr)
 

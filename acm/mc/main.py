@@ -3,6 +3,9 @@
 
 import urllib2
 from BeautifulSoup import BeautifulSoup
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def printToFile(fname, arr):
     print >> open(fname, 'w'), len(arr), u' '.join(arr)
@@ -17,7 +20,6 @@ def getSolved(soup, cur_id):
 	    if (e.next.startswith(u'Решенные задачи')):
 	        return [r.next for r in e.nextSibling.nextSibling.findAll('a')]
 	return []
-
 
 def check(soup, cur_id, problems):
     solved = getSolved(soup, cur_id)
@@ -43,13 +45,8 @@ def getProblemName(p):
 def getProblemLink(p):
     return "<a href=\"http://acmp.ru/index.asp?main=task&id_task=" + p + "\">" + getProblemName(p) +"</a>" 
 
-problems = readList("problems.txt")
-ids = readList("ids.txt")
-
-problems.pop()
-ids.pop()
-
-table = [[" "] + [getProblemLink(p) for p in problems]]
+# table = [[" "] + [getProblemLink(p) for p in problems]]
+table = []
 
 print "<meta charset=\"utf-8\">"
 print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"
@@ -61,18 +58,43 @@ print "<br>"
 
 # print problems
 
-for cur_id in ids:
-    web_page = urllib2.urlopen("http://acmp.ru/index.asp?main=user&id=" + cur_id).read()
-    soup = BeautifulSoup(web_page)
-    lst = []
-    lst.append(str(getName(soup, cur_id)))
-    for x in check(soup, cur_id, problems):
-        lst.append(x)
-    # print lst
-    table.append(lst)
+chrome_id = "93028"
+
+web_page = urllib2.urlopen("http://acmp.ru/index.asp?main=user&id=" + chrome_id).read()
+soup = BeautifulSoup(web_page)
+
+solvedChrome = getSolved(soup, chrome_id)
+
+rich_id = "62001"
+web_page = urllib2.urlopen("http://acmp.ru/index.asp?main=user&id=" + rich_id).read()
+soup = BeautifulSoup(web_page)
+
+solved50Rich = getSolved(soup, rich_id)
+
+yyy = solvedChrome
+solvedChrome = solved50Rich
+solved50Rich = yyy
+
+for p in solvedChrome:
+    if solved50Rich.count(p) == 0:
+        # print str(getProblemLink((p)))
+        table.append([str(getProblemLink((p))), "-"])
+
+print "".join(html_table(table))
+
+# for cur_id in ids:
+#    web_page = urllib2.urlopen("http://acmp.ru/index.asp?main=user&id=" + cur_id).read()
+#    soup = BeautifulSoup(web_page)
+#    lst = []
+#    lst.append(str(getName(soup, cur_id)))
+#    for x in check(soup, cur_id, problems):
+#        lst.append(x)
+#    # print lst
+#    table.append(lst)
    
    # print " <br> ", getName(soup, cur_id), " ", check(soup, cur_id, problems)
 
-print "\n".join(html_table(table))
+# print "\n".join(html_table(table))
 
 # print check("93028", ["15", "56", "697"])
+

@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import urllib2
 from BeautifulSoup import BeautifulSoup
 
+print "Content-type: text/html"
+print 
 def printToFile(fname, arr):
     print >> open(fname, 'w'), len(arr), u' '.join(arr)
 
@@ -17,7 +19,6 @@ def getSolved(soup, cur_id):
 	    if (e.next.startswith(u'Решенные задачи')):
 	        return [r.next for r in e.nextSibling.nextSibling.findAll('a')]
 	return []
-
 
 def check(soup, cur_id, problems):
     solved = getSolved(soup, cur_id)
@@ -43,21 +44,32 @@ def getProblemName(p):
 def getProblemLink(p):
     return "<a href=\"http://acmp.ru/index.asp?main=task&id_task=" + p + "\">" + getProblemName(p) +"</a>" 
 
+def getLink(link, name):
+    return '<a href=\"%s\">%s</a>' % (link, str(name))
+
+def getTag(tag, text):
+    tag = str(tag)
+    return '<%s>%s</%s>' % (tag, text, tag)
+
 problems = readList("problems.txt")
-ids = readList("ids.txt")
+ids = []
+# ids = readList("ids.txt")
 
-problems.pop()
-ids.pop()
+# problems.pop()
+# ids.pop()
 
-table = [[" "] + [getProblemLink(p) for p in problems]]
+table = [[getProblemLink(p) for p in problems], [getLink("http://informatics.mccme.ru/mod/statements/view.php?id=4252", "Задачи на scanline")], 
+        ["Interesting problem on coordinates zipping: ", getProblemLink("632")]]
 
 print "<meta charset=\"utf-8\">"
-print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"
+print getTag('h1', 'Scanline')
+
+# print "<style>\ntable, th, td {border: 1px solid black;border-collapse: collapse;}</style>"
+
+# print table[1]
 
 # for p in problems:
 #    print "<a href=\"http://acmp.ru/index.asp?main=task&id_task= + p\">" + p + "</a>"
-
-print "<br>"
 
 # print problems
 
@@ -69,10 +81,12 @@ for cur_id in ids:
     for x in check(soup, cur_id, problems):
         lst.append(x)
     # print lst
+    
     table.append(lst)
    
-   # print " <br> ", getName(soup, cur_id), " ", check(soup, cur_id, problems)
+table.append([getLink("http://informatics.mccme.ru/py-source/source/dir/240-430?cnt=100", "Mega Big Archive")])
 
 print "\n".join(html_table(table))
 
 # print check("93028", ["15", "56", "697"])
+

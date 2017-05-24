@@ -18,7 +18,6 @@ def getSolved(soup, cur_id):
 	        return [r.next for r in e.nextSibling.nextSibling.findAll('a')]
 	return []
 
-
 def check(soup, cur_id, problems):
     solved = getSolved(soup, cur_id)
     return ["+" if solved.count(p) > 0 else "-" for p in problems]
@@ -76,3 +75,4 @@ for cur_id in ids:
 print "\n".join(html_table(table))
 
 # print check("93028", ["15", "56", "697"])
+

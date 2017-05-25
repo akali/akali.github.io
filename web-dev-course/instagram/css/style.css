@@ -157,31 +157,52 @@ header {
 	opacity: 0;
 	height: 293px;
 	width: 293px;
+	/*margin: 0 auto;*/
+	padding-top: 110px;
+	padding-left: 80px;
 }
 
 .overlay i {
+	padding-left: 10px;
 	font-size: 24px;
 	opacity: 1;
-	padding-top: 110px;
-	padding-left: 110px;
 	color: white;
 	background-color: black;
 }
 
-.overlay b {
+.overlay p {
+	font-family: 'Ubuntu';
 	opacity: 1;
-	padding-top: 115px;
+	padding-top: 5px;
 	padding-left: 10px;
 	color: white;
 	background-color: black;
 }
 
 .post {
+	
+}
+
+.post-image {
+	position: relative;
+	overflow: hidden;
 	height: 293px;
 	width: 293px;
 	margin-right: 20px;
 	margin-bottom: 20px;
-	background: url('../images/post2.jpg') 10% 10%;
+/*	background-position: left top;
+	background-repeat: no-repeat;
+*/}
+
+.post-image img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	-webkit-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
 }
 
 .overlay:hover {

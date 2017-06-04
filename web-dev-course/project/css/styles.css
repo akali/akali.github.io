@@ -1,0 +1,593 @@
+* {
+	padding: 0;
+	margin: 0;
+	font: 10px Ubuntu;
+}
+
+body{
+	background-color: #F2DE0D;
+}
+
+a {
+	text-decoration: none;
+	color: #a4a4a4;
+}
+
+button {
+	background-color: white;
+}
+
+button:hover {
+	background-color: #f2f2f2;
+}
+
+.vertical-line {
+	height: 310px;
+	width: 0px;
+	border: 1px solid black;
+}
+
+.root-wrapper {
+	margin: 0 auto;
+	width: 1356px;
+	/*height: inherit;*/
+	display: flex;
+	/*justify-content: center;
+	align-items: center;*/
+	background-color: #F2DE0D;
+	/*background: linear-gradient(to bottom right, #F2DE0D 10%, green 30%, violet 80%);*/
+}
+
+.root {
+	width: 965px;
+	height: 100%;
+	display: flex;
+	margin: 0 auto;
+}
+
+.left-sidebar {
+	width: 60px;
+	height: 625px;
+	position: fixed;
+	border-right: 1px solid rgba(0, 0, 0, 0.7);
+	background-color: #F7F7F7;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
+.left-sidebar-top {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.left-sidebar-item {
+
+}
+
+.chosen {
+	background-color: yellow;
+	height: 55px !important;
+}
+
+.left-sidebar-top>a {
+	height: 80px !important;
+}
+
+.left-sidebar-top i {
+	color: #3d3d3d;
+	font-size: 28px;
+}
+
+.logo {
+	height: 30%;
+}
+
+.logo img {
+	height: 100%;
+	width: 100%;
+}
+
+.left-sidebar-top a {
+	width: 60px;
+	height: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.left-sidebar-top :hover {
+	background-color: yellow;
+}
+
+.left-sidebar-top a>p {
+	color: black;
+}
+
+.content-wrapper {
+	
+}
+
+.main-content {
+	/*width: inherit;*/
+	background-color: #F1F1F1;
+	/*height: 100%;*/
+	width: 905px;
+	margin-left: 60px
+}
+
+.head-navigation-bar {
+	/*position: fixed;*/
+	height: inherit;
+	width: 905px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	/*box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #F1F1F1;
+}
+
+.head-links {
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+	justify-content: space-between;
+	height: 100%;
+	width: 70%;
+}
+
+.head-links a {
+	color: #959595;
+}
+
+.head-actions {
+	display: flex;
+	height: inherit;
+	width: 20%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.head-actions i {
+	color: grey;
+}
+
+.top-wrapper {
+	height: 50px;
+	width: 850px;
+}
+
+.card-container {
+	width: 855px;
+	margin: 0 auto;
+	/*height: 435px;*/
+	margin-bottom: 50px;
+	/*background-color: red*/;
+}
+
+.cards-checkbox-wrapper {
+	height: 55px;
+	width: inherit;
+	background-color: #E7E7E7;
+	border-bottom: 1px solid orange;
+}
+
+.cards-checkbox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 20px;
+	height: inherit;
+	width: 40%;
+}
+
+.card-checkbox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 20px;
+	width: 15%;
+}
+
+.card-checkbox p{
+	padding-left: 7px;
+	font-size: 12px;
+}
+
+.top-card {
+	width: inherit;
+	height: 55px;
+	background: linear-gradient(to right, #C6E3EB, #C7E7DE);
+
+	border-bottom: 3px solid #0FBFFF;
+
+	padding-left: 20px;
+	padding-right: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card-top-actions {
+	font-weight: lighter;	
+}
+
+.card-top-info-row1 {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+.card-top-info-row2 {
+	font-size: 1em;
+	color: #95C4D6;
+}
+
+.card-content-wrapper {
+	padding: 20px;
+}
+
+.card-content {
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+}
+
+.card-info {
+	display: flex;
+	flex-direction: column;
+	width: 63%;
+}
+
+.above-cad{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 60px;
+	padding-left: 25px;
+}
+
+.above-cad>p{
+	font-size: 11px;
+	font-style: italic;
+}
+
+.above-card {
+	display: flex;
+	background-color: white;
+	align-items: center;
+	justify-content: space-around;
+	width: 100px;
+	border: 1px solid rgba(0,0,0,0);
+	border-radius: 3px;
+	height: 30%;
+	margin-left: 20px;
+}
+
+.above-card:hover {
+	border: 1px solid black;
+}
+
+.above-card p {
+	font-size: 9px;
+}
+
+.above-card img {
+	height: 90%;
+}
+
+.one-card {
+	display: flex;
+	flex-direction: column;
+	background-color: #F7F7F7;
+}
+
+.card-money {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 20px;
+	height: 50%;
+}
+
+.card-money img {
+	height: 100%;
+	width: 55%;
+	border-radius: 17px;
+}
+
+.card-available {
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	padding-left: 25px;
+	padding-top: 5px;
+	/*margin: 20px;*/
+	align-items: center;
+	justify-content: center;
+}
+
+.sum-block {
+	font-size: 20px;
+	width: 100%;
+	height: 100%;
+}
+
+.money-amount {
+	padding-top: 5px;
+	font-size: 25px;
+}
+
+.card-account {
+	height: 40%;
+	display: flex;
+	flex-direction: row;
+	
+	margin-bottom: 50px;
+}
+
+.card-account-left {
+	display: flex;
+	flex-direction: column;
+	width: 55%;
+	justify-content: space-between;
+}
+
+.card-left-info {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.card-left-row1, .card-left-row2, .card-left-row3 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 0;
+	width: 100%;
+}
+
+.card-account p {
+	font-size: 10px;
+	color: gray;
+}
+
+.card-account a {
+	font-size: 10px;
+	color: #A4B5C3;
+	border-bottom: 1px dashed #A4B5C3;
+}
+
+.card-left-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.card-left-buttons button {
+	width: 40%;
+	border: 2px solid black;
+	border-radius: 5px;
+	height: 30px;
+	font-size: 10px;
+}
+
+.card-account-right {
+	display: flex;
+	flex-direction: column;
+	width: 45%;
+	justify-content: space-between;
+	padding-left: 20px;
+	/*padding-left: 5px;*/
+	/*padding-top: 10px;*/
+}
+
+.card-right-info {
+	margin: 10px 10px;
+}
+
+.card-right-buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.card-right-buttons button {
+	border: 2px solid black;
+	border-radius: 5px;
+	height: 30px;
+	width: 70%;
+	/*margin: 0 auto;*/
+}
+
+.card-history {
+	width: 37%;
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card-history > a {
+	margin-top: 20px;
+	font-size: 1em;
+	color: #97a3ab;
+}
+
+.history-buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding-bottom: 5px;
+}
+
+.history-buttons button {
+	width: 50%;
+	border: 1px solid gray;
+	height: 30px;
+}
+
+.selected {
+	border: 1px solid black !important;
+	font-weight: bold;
+	/*background-color: red;*/
+}
+
+.last-operations {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.last-op-row {
+	padding: 5px 0;
+	border-bottom: 1px solid gray;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/*align-items: center;*/
+}
+
+.last-op-row:hover{
+	background-color: #f2f2f2;
+}
+
+.last-row {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.last-op-row a {
+	font-size: 1.1em;
+	color: black;
+	border-bottom: 1px dashed black;
+}
+
+.op-title {
+	font-size: 12px;
+}
+
+.op-date {
+	font-size: 10px;
+	color: #A9A9A9;
+	padding-top: 5px;
+}
+
+.op-sum {
+	font-size: 12px;
+}
+
+.full-list-show {
+	font-size: 1.2em !important;
+	color: #4b72af !important;
+}
+
+footer{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80px;
+	background-color: white;
+	padding-left: 25px;
+}
+
+.search {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.search input {
+	font-size: 10px;
+	margin: 20px;
+	width: 75%;
+	height: 25px;
+	color: #666666;
+	background-color: inherit;
+	text-decoration: none;
+	font-style: italic;
+	border: none;
+	border-bottom: 2px solid #3d3d3d;
+/*	background: url('../images/loupe.svg');
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: 100% 80%;
+*/}
+
+.search img {
+	height: 100%;
+	width: 25px;
+}
+
+.footer-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 35%;
+	padding-right: 25px;
+}
+
+/* Toggle Checkbox */
+ /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+	background-color: yellow;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px yellow;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

@@ -14,18 +14,18 @@
 				<form action="post" class="login-form">
 					<table>
 						<tr>
-							<td class="item"><p>Email or Phone</p></td>
-							<td class="item"><p>Password</p></td>
+							<td class="item"><p>Эл. адрес или телефон</p></td>
+							<td class="item"><p>Почта</p></td>
 							<td class="item"></td>
 						</tr>
 						<tr>
 							<td class="item"><input type="text"></td>
 							<td class="item"><input type="password"></td>
-							<td class="item"><button>Log In</button></td>
+							<td class="item"><button>Вход</button></td>
 						</tr>
 						<tr>
 							<td class="item"></td>
-							<td class="item"><a href="">Forgot account?</a></td>
+							<td class="item"><a href="">Забыли аккаунт?</a></td>
 							<td class="item"></td>
 						</tr>
 					</table>
@@ -41,34 +41,43 @@
 				<div class="people"></div>
 			</div>
 			<div class="right">
-				<h1>Sign Up</h1>
-				<p>It’s free and always will be.</p>
-				<form action="post">
+				<div class="texting">
+					<h1>Регистрация</h1>
+					<p>Это бесплатно и всегда будет бесплатнo.</p>
+				</div>
+				<form action="#">
 					<div class="fields">
 						<div class="row1">
-							<input type="text" placeholder="First name">
-							<input type="text" placeholder="Last name">
+							<input class="name" type="text" placeholder="Имя">
+							<input type="text" placeholder="Фамилия">
 						</div>
 						<div class="row23">
-							<input type="text" placeholder="Mobile number or email">
+							<input type="text" placeholder="Номер мобильного телефона или эл. адрес">
 						</div>
 						<div class="row23">
 							<input type="password" placeholder="New password">
 						</div>
 					</div>
-					<p>Birthday</p>
+					<p class="bday">Дата рождения</p>
 					<div class="date"></div>
 					<div class="sex" data-type="radio">
+						<div>
 							<input name="gender" id="female" type="radio">
-							<label for="female">Female</label>
+							<label for="female">Женщина</label>
+						</div>
+						<div>
 							<input name="gender" id="male" type="radio">
-							<label for="male">Male</label>
+							<label for="male">Мужчина</label>
+						</div>
 					</div>
-					<p>
-						By clicking Create Account, you agree to our Terms and that you have read our Data Policy, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
-					</p>
-					<input type="submit" class="create-account-button" value="Create Account">
+					<div class="details-wrap">
+						<p class="details">
+							Нажимая «Создать аккаунт», вы соглашаетесь с нашими Условиями использования и подтверждаете, что ознакомились с нашей Политикой использования данных, включая применение файлов «cookie». Вы можете получать SMS-уведомления от Facebook, от которых можете отказаться в любой момент.
+						</p>
+					</div>
+					<input type="submit" class="create-account-button" value="Создать аккаунт">
 				</form>
+				<div class="create-another-account">Создать Страницу знаменитости, музыкальной группы или компании.</div>
 			</div>
 		</div>
 		</div>

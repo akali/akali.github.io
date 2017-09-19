@@ -24,8 +24,11 @@ window.onload = function() {
 	d[0].appendChild(a);
 	a = document.createElement('a');
 	a.href='https://www.facebook.com/';
-	a.appendChild(document.createTextNode('Why do I need to provide my birthday?'));
+	a.appendChild(document.createTextNode('Зачем указывать дату рождения?'));
+	a.class='whybday';
 	a.style.fontSize="10px";
 	a.style.textDecoration="none";
+	a.style.fontFamily="'Helvetica', 'Arial', sans-serif !important;";
+	
 	d[0].appendChild(a);
 }

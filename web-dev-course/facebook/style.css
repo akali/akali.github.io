@@ -195,7 +195,12 @@
 }
 .bday {
 	font-family: 'Helvetica', 'Arial', sans-serif !important;
-	margin-top: 10px;
+	margin: 10px 0;
+}
+
+.date {
+	display: flex;
+	flex-direction: row;
 }
 
 .create-another-account {
@@ -204,4 +209,45 @@
 	font-size: 13px;
 	color: #666;
 	margin: 10px 0;
+}
+
+.bottom {
+	display: flex;
+	flex-direction: column;
+	width: 980px;
+	margin: 0 auto;
+}
+
+.langs a {
+	font-family: 'Helvetica', 'Arial', sans-serif !important;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+.langs a:visited {
+	color: #365899;
+}
+
+.langs td {
+	padding-right: 5px;
+}
+
+.bottom-stuff {
+	table-layout: fixed;
+	overflow: visible;
+}
+
+.stuff-item {
+	font-family: 'Helvetica', 'Arial', sans-serif !important;
+	font-size: 13px;
+	padding-right: 5px;
+	color: #365899;
+}
+
+.facebook {
+	font-family: 'Helvetica', 'Arial', sans-serif !important;
+	font-size: 13px;
+	padding: 0px 5px;
+	margin: 20px 0;
+	color: #666;
 }

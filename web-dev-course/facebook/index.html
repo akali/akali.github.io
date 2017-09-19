@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Facebook</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="app.js"></script>
 </head>
 <body>
 	<div class="root">
@@ -11,12 +12,66 @@
 			<div class="head-content">
 				<div class="logo"></div>
 				<form action="post" class="login-form">
-					<input type="text">
-					<input type="password">
-					<button></button>
+					<table>
+						<tr>
+							<td class="item"><p>Email or Phone</p></td>
+							<td class="item"><p>Password</p></td>
+							<td class="item"></td>
+						</tr>
+						<tr>
+							<td class="item"><input type="text"></td>
+							<td class="item"><input type="password"></td>
+							<td class="item"><button>Log In</button></td>
+						</tr>
+						<tr>
+							<td class="item"></td>
+							<td class="item"><a href="">Forgot account?</a></td>
+							<td class="item"></td>
+						</tr>
+					</table>
 				</form>
 			</div>
 		</header>
+		<div class="grad">
+		<div class="main">
+			<div class="left">
+				<div class="wrap">
+					Facebook помогает вам всегда оставаться на связи и общаться со своими знакомыми.
+				</div>
+				<div class="people"></div>
+			</div>
+			<div class="right">
+				<h1>Sign Up</h1>
+				<p>It’s free and always will be.</p>
+				<form action="post">
+					<div class="fields">
+						<div class="row1">
+							<input type="text" placeholder="First name">
+							<input type="text" placeholder="Last name">
+						</div>
+						<div class="row23">
+							<input type="text" placeholder="Mobile number or email">
+						</div>
+						<div class="row23">
+							<input type="password" placeholder="New password">
+						</div>
+					</div>
+					<p>Birthday</p>
+					<div class="date"></div>
+					<div class="sex" data-type="radio">
+							<input name="gender" id="female" type="radio">
+							<label for="female">Female</label>
+							<input name="gender" id="male" type="radio">
+							<label for="male">Male</label>
+					</div>
+					<p>
+						By clicking Create Account, you agree to our Terms and that you have read our Data Policy, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
+					</p>
+					<input type="submit" class="create-account-button" value="Create Account">
+				</form>
+			</div>
+		</div>
+		</div>
 	</div>
 </body>
 </html>

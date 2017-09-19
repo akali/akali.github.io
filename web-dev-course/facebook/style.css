@@ -7,7 +7,6 @@
 .root {
 	display: flex;
 	flex-direction: column;
-	/*height: 100vh;*/
 }
 
 .header {
@@ -24,9 +23,9 @@
 	display: flex;
 	flex-direction: row;
 	margin: 0 auto;
-	width: 63%;
+	width: 980px;
 	justify-content: space-between;
-	/*border: 2px double black;*/
+	align-items: center;
 }
 
 .logo {
@@ -36,5 +35,91 @@
 }
 
 .login-form {
-	
+	display: flex;
+	flex-direction: row;
+}
+
+.item {
+	padding-left: 14px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.8em;
+}
+
+.item > p {
+	color: white;
+}
+
+.item > input {
+	width: 150px;
+}
+
+.item > button {
+	background-color: #4267B2;
+	color: white;
+	border: 5px bold black;
+	font-weight: bold;
+	padding: 1px 6px;
+}
+
+.item > a {
+	color: #94ACD2;
+	text-decoration: none;
+}
+
+.grad {
+	background: linear-gradient(white, #D3D8E8);
+}
+
+.main {
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	width: 980px;
+	margin: 0 auto;
+}
+
+.left {
+	margin-top: 40px;
+	width: 565px;
+	margin-right: 15px;
+}
+
+.wrap {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	color: #0E385F;
+	width: 450px;
+}
+
+.right {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.people {
+	width: 537px;
+	height: 195px;
+	background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/GwFs3_KxNjS.png);
+}
+
+.row1 {
+	display: flex;
+	flex-direction: row;
+}
+
+.row23>input {
+	width: 100%;
+}
+
+.create-account-button {
+	padding: 7px 20px;
+	margin: 10px 0;
+	font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+	font-weight: bold;
+	color: white;
+	background: linear-gradient(#67ae55, #578843);
+	border: 1px solid;
+	border-radius: 5px;
+	font-size: 19px;
+	border-color: #3b6e22 #3b6e22 #2c5115;
 }

@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.root {
+	display: flex;
+	flex-direction: column;
+	/*height: 100vh;*/
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #3b5998;
+    background-image: linear-gradient(#4e69a2, #3b5998 50%);
+   	height: 83px;
+	width: 100%;
+}
+
+.head-content {
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	width: 63%;
+	justify-content: space-between;
+	/*border: 2px double black;*/
+}
+
+.logo {
+    width: 170px;
+    height: 34px;
+   	background: url(https://www.facebook.com/rsrc.php/v3/y6/r/80Toi9Z6PPm.png);
+}
+
+.login-form {
+	
+}

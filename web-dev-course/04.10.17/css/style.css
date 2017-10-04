@@ -1,4 +1,5 @@
 * {
+	font-family: 'Roboto', sans-serif;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -9,7 +10,8 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	background-color: red;
+	padding: 20px 0;
+	border: 1px solid black;
 }
 
 .head {
@@ -20,15 +22,18 @@
 
 .head-text {
 	margin: 0 auto;
+	color: #3598FE;
+	font-size: 20px;
 }
 
 .bottom-line {
-	border-bottom: 10px solid gray;
+	border-bottom: 1px solid #E6EFF3;
 	padding: 20px;
 }
 
 .card {
-	margin: 10px;
+	margin: 0 10px;
+	margin-bottom: 20px;
 	background-color: white;
 	border-radius: 5px;
 }
@@ -36,20 +41,96 @@
 .title-text {
 	color: #9DA0B1;
 	font-size: 18px;
+	margin: 20px 0;
 }
 
 .dotted-button {
-	border: 1px dashed blue;
+	border: 2px dashed #3598FE;
 	border-radius: 2px;
-	padding: 15px 20px;
+	padding: 30px 40px;
 	width: inherit;
+	color: #3598FE;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.grad {
+    background: linear-gradient(to bottom, #FFF, rgba(35, 98, 123, 0.1));
+}
+
+.alpha-background {
+    background: linear-gradient(to bottom, rgba(35, 98, 123, 0.1) 95%, #FFF);
 }
 
 .circle {
 	height: 0px;
 	width: 0px;
-	border: 10px solid gray;
+	border: 10px solid #E6EFF3;
 	border-radius: 50%;
+}
+
+.big-text {
+	font-size: 1.5em;
+	font-weight: bolder;
+	color: #6A7189;
+	margin: 20px 0;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.checked {
+	position: absolute;
+	left: -22px;
+	top: -12px;
+	height: 50px;
+	width: 50px;
+	background-color: #3598FE;
+	border-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-size: 1.4em;
+	box-shadow: 0 0 10px rgba(35, 98, 123, 0.5);
+}
+
+.back-arrow {
+	position: relative;
+	margin: 10px;
+}
+
+.arrow-line {
+	position: absolute;
+	left: -2px;
+	height: 3px;
+	width: 32px;
+	background-color: #A8C7EB;
+}
+
+.arrow-lineup {
+	position: absolute;
+	left: -8px;
+	top: -7px;
+	height: 3px;
+	width: 22px;
+	background-color: #A8C7EB;
+	transform: rotate(-45deg);
+}
+
+.arrow-linedown {
+	position: absolute;
+	left: -8px;
+	top: 7px;
+	height: 3px;
+	width: 22px;
+	background-color: #A8C7EB;
+	transform: rotate(45deg);
+}
+
+.checked-text {
+	margin: auto auto;
+	color: white;
 }
 
 .circle-line {
@@ -58,8 +139,11 @@
 }
 
 .line {
-	border: 1px solid gray;
-	transform: rotate(90deg);
+	height: 4px;
+	width: 60px;
+	margin: auto 0;
+	display: inline-block;
+	background-color: #E6EFF3;
 }
 
 .glowing-button {
@@ -72,7 +156,9 @@
 	display: flex;
 	justify-content: space-around;
 	padding: 20px;
+	cursor: pointer;
 }
 
 .progress-line {
+	margin: 60px 0;
 }

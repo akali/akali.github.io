@@ -1,0 +1,78 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.root {
+	width: 560px;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	background-color: red;
+}
+
+.head {
+	height: 80px;
+	display: flex;
+	padding: 20px;
+}
+
+.head-text {
+	margin: 0 auto;
+}
+
+.bottom-line {
+	border-bottom: 10px solid gray;
+	padding: 20px;
+}
+
+.card {
+	margin: 10px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.title-text {
+	color: #9DA0B1;
+	font-size: 18px;
+}
+
+.dotted-button {
+	border: 1px dashed blue;
+	border-radius: 2px;
+	padding: 15px 20px;
+	width: inherit;
+}
+
+.circle {
+	height: 0px;
+	width: 0px;
+	border: 10px solid gray;
+	border-radius: 50%;
+}
+
+.circle-line {
+	display: flex;
+	justify-content: space-between;
+}
+
+.line {
+	border: 1px solid gray;
+	transform: rotate(90deg);
+}
+
+.glowing-button {
+	margin-top: 50px;
+	background-color: #3598FE;
+	color: white;
+	font-size: 24px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(35, 98, 123, 0.5);
+	display: flex;
+	justify-content: space-around;
+	padding: 20px;
+}
+
+.progress-line {
+}

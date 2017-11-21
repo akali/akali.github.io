@@ -87,7 +87,7 @@ Calculator.prototype.render = function(given) {
 	}
 
 	operations.appendChild(createButton('=', function() {
-		input.innerHTML = eval(reparse(input.innerHTML, last));
+		input.innerHTML = reparse(eval(reparse(input.innerHTML, 10)), last);
 	}));
 	
 	let ops = ['+', '-', '/', '*'];

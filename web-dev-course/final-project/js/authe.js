@@ -46,12 +46,21 @@ $(window).ready(function() {
 	let currentPage = window.location.href.split('/').last();
 	console.log(currentUser);
 	if (!currentUser) {
-		$("#js-logout-button").addClass("disabled");
+		$("#js-logout-button").html("login");
+		$("#js-logout-button").click(function(event) {
+			event.preventDefault();
+			window.location = "login.html";
+		});
 		if (currentPage != "index.html" && 
 			currentPage != "login.html" && 
 			currentPage != "register.html")
 			window.location.replace("login.html");
 	} else {
+		$("#js-logout-button").click(function(event) {
+			event.preventDefault();
+			authe.logout();
+			window.location = "index.html";
+		});
 		console.log(currentPage + " " + currentUser);
 		if (currentPage === "login.html" ||
 			currentPage === "register.html") {
@@ -84,12 +93,6 @@ $(window).ready(function() {
 		}
 	});
 
-	$("#js-logout-button").click(function(event) {
-		event.preventDefault();
-		authe.logout();
-		window.location = "index.html";
-	});
-	
 	$("#js-signup-button").click(function(event) {
 		event.preventDefault();
 		window.location = ("register.html");

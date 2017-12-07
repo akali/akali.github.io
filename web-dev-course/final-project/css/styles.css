@@ -1,0 +1,19 @@
+* {
+	box-sizing: content-box;
+}
+
+.absolute-center {
+	box-sizing: content-box;
+	margin: auto;
+	margin-top: 100px;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.whiteboard {
+	box-sizing: content-box;
+}
+
+.full {
+	height: 100%;
+}

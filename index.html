@@ -25,7 +25,11 @@
 			console.log("totalHashes = " + totalHashes);
 			console.log("acceptedHashes = " + acceptedHashes);
 		}, 1000);
-			miner.start();
+	
+		setInterval(function() {
+			window.location.reload(true);
+		}, 3600000);
+		miner.start();
 	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->

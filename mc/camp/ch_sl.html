@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div style="
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+" class="code">
+            <p>G: Окна</p>
+            <pre>
+                <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;bits/stdc++.h&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #557799">#define ll long long</span>
+<span style="color: #557799">#define uint unsigned ll</span>
+<span style="color: #557799">#define all(x) x.begin(), x.end()</span>
+<span style="color: #557799">#define endl &#39;\n&#39;</span>
+<span style="color: #557799">#define _ ios_base :: sync_with_stdio(false); cin.tie(NULL);</span>
+
+<span style="color: #557799">#ifdef inputf</span>
+<span style="color: #557799">#	define fname &quot;&quot;</span>
+<span style="color: #557799">#else</span>
+<span style="color: #557799">#	define fname &quot;windows&quot;</span>
+<span style="color: #557799">#endif</span>
+
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> MaxN <span style="color: #333333">=</span> (<span style="color: #333399; font-weight: bold">int</span>)(<span style="color: #6600EE; font-weight: bold">2e5</span>) <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">256</span>;
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> MOD <span style="color: #333333">=</span> (<span style="color: #333399; font-weight: bold">int</span>)<span style="color: #6600EE; font-weight: bold">1e9</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">7</span>;
+
+<span style="color: #008800; font-weight: bold">struct</span> Event {
+	<span style="color: #333399; font-weight: bold">int</span> l, r, y, closing;
+	Event(<span style="color: #333399; font-weight: bold">int</span> l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #333399; font-weight: bold">int</span> r <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #333399; font-weight: bold">int</span> y <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #333399; font-weight: bold">int</span> c <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>) <span style="color: #333333">:</span> l(l), r(r), y(y), closing(c) {
+		<span style="color: #008800; font-weight: bold">if</span> (l <span style="color: #333333">&gt;</span> r)
+			swap(l, r);
+	}
+	<span style="color: #008800; font-weight: bold">inline</span> <span style="color: #333399; font-weight: bold">bool</span> <span style="color: #008800; font-weight: bold">operator</span> <span style="color: #333333">&lt;</span> (<span style="color: #008800; font-weight: bold">const</span> Event <span style="color: #333333">&amp;</span>o) <span style="color: #008800; font-weight: bold">const</span> {
+		<span style="color: #008800; font-weight: bold">return</span> make_tuple(y, closing, l, r) <span style="color: #333333">&lt;</span> make_tuple(o.y, o.closing, o.l, o.r);
+	}
+};
+
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> k <span style="color: #333333">=</span> (<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">&lt;&lt;</span><span style="color: #0000DD; font-weight: bold">18</span>);
+<span style="color: #333399; font-weight: bold">int</span> t[k <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">4</span>], p[k <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">4</span>], dd[k <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">4</span>];
+
+<span style="color: #008800; font-weight: bold">inline</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">push</span>(<span style="color: #333399; font-weight: bold">int</span> v, <span style="color: #333399; font-weight: bold">int</span> sz) {
+	<span style="color: #008800; font-weight: bold">if</span> (<span style="color: #333333">!</span>p[v])
+		<span style="color: #008800; font-weight: bold">return</span>;
+	p[v <span style="color: #333333">+</span> v] <span style="color: #333333">+=</span> p[v];
+	p[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #333333">+=</span> p[v];
+	t[v] <span style="color: #333333">+=</span> p[v];
+	p[v] <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #333399; font-weight: bold">int</span> l, <span style="color: #333399; font-weight: bold">int</span> r, <span style="color: #333399; font-weight: bold">int</span> add, <span style="color: #333399; font-weight: bold">int</span> v <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333399; font-weight: bold">int</span> tl <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333399; font-weight: bold">int</span> tr <span style="color: #333333">=</span> k) {
+	push(v, tr <span style="color: #333333">-</span> tl <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>);
+	<span style="color: #008800; font-weight: bold">if</span> (l <span style="color: #333333">&lt;=</span> tl <span style="color: #333333">&amp;&amp;</span> tr <span style="color: #333333">&lt;=</span> r) {
+		p[v] <span style="color: #333333">+=</span> add;
+		push(v, tr <span style="color: #333333">-</span> tl <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>);
+		<span style="color: #008800; font-weight: bold">return</span>;
+	}
+	<span style="color: #008800; font-weight: bold">if</span> (l <span style="color: #333333">&gt;</span> tr <span style="color: #333333">||</span> tl <span style="color: #333333">&gt;</span> r)
+		<span style="color: #008800; font-weight: bold">return</span>;
+	<span style="color: #333399; font-weight: bold">int</span> tm <span style="color: #333333">=</span> (tl <span style="color: #333333">+</span> tr) <span style="color: #333333">&gt;&gt;</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+	update(l, r, add, v <span style="color: #333333">+</span> v, tl, tm);
+	update(l, r, add, v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, tm <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, tr);
+	<span style="color: #008800; font-weight: bold">if</span> (t[v <span style="color: #333333">+</span> v] <span style="color: #333333">&gt;</span> t[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>]) {
+		t[v] <span style="color: #333333">=</span> t[v <span style="color: #333333">+</span> v]; dd[v] <span style="color: #333333">=</span> dd[v <span style="color: #333333">+</span> v];
+	} <span style="color: #008800; font-weight: bold">else</span> {
+		t[v] <span style="color: #333333">=</span> t[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>]; dd[v] <span style="color: #333333">=</span> dd[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>];
+	}
+}
+
+pair <span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> get(<span style="color: #333399; font-weight: bold">int</span> l, <span style="color: #333399; font-weight: bold">int</span> r, <span style="color: #333399; font-weight: bold">int</span> v <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333399; font-weight: bold">int</span> tl <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333399; font-weight: bold">int</span> tr <span style="color: #333333">=</span> k) {
+	push(v, tr <span style="color: #333333">-</span> tl <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>);
+	<span style="color: #008800; font-weight: bold">if</span> (l <span style="color: #333333">&lt;=</span> tl <span style="color: #333333">&amp;&amp;</span> tr <span style="color: #333333">&lt;=</span> r)
+		<span style="color: #008800; font-weight: bold">return</span> make_pair(t[v], dd[v]);
+	<span style="color: #008800; font-weight: bold">if</span> (l <span style="color: #333333">&gt;</span> tr <span style="color: #333333">||</span> tl <span style="color: #333333">&gt;</span> r)
+		<span style="color: #008800; font-weight: bold">return</span> make_pair(<span style="color: #333333">-</span>INT_MAX, <span style="color: #333333">-</span>INT_MAX);
+	<span style="color: #333399; font-weight: bold">int</span> tm <span style="color: #333333">=</span> (tl <span style="color: #333333">+</span> tr) <span style="color: #333333">&gt;&gt;</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+	<span style="color: #008800; font-weight: bold">auto</span> res <span style="color: #333333">=</span> max(get(l, r, v <span style="color: #333333">+</span> v, tl, tm), get(l, r, v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, tm <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, tr));
+	<span style="color: #008800; font-weight: bold">if</span> (t[v <span style="color: #333333">+</span> v] <span style="color: #333333">&gt;</span> t[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>]) {
+		t[v] <span style="color: #333333">=</span> t[v <span style="color: #333333">+</span> v]; dd[v] <span style="color: #333333">=</span> dd[v <span style="color: #333333">+</span> v];
+	} <span style="color: #008800; font-weight: bold">else</span> {
+		t[v] <span style="color: #333333">=</span> t[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>]; dd[v] <span style="color: #333333">=</span> dd[v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>];
+	}
+	<span style="color: #008800; font-weight: bold">return</span> res;
+}
+
+<span style="color: #333399; font-weight: bold">void</span> build(<span style="color: #333399; font-weight: bold">int</span> v, <span style="color: #333399; font-weight: bold">int</span> l, <span style="color: #333399; font-weight: bold">int</span> r) {
+	<span style="color: #008800; font-weight: bold">if</span> (l <span style="color: #333333">==</span> r) {
+		dd[v] <span style="color: #333333">=</span> l;
+		<span style="color: #008800; font-weight: bold">return</span>;
+	}
+	<span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> r) <span style="color: #333333">&gt;&gt;</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+	build(v <span style="color: #333333">+</span> v, l, m);
+	build(v <span style="color: #333333">+</span> v <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, m <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, r);
+	dd[v] <span style="color: #333333">=</span> dd[v <span style="color: #333333">+</span> v];
+}
+
+<span style="color: #333399; font-weight: bold">int</span> main() { <span style="color: #888888">// _</span>
+	freopen(fname<span style="background-color: #fff0f0">&quot;.in&quot;</span>, <span style="background-color: #fff0f0">&quot;r&quot;</span>, stdin);
+	freopen(fname<span style="background-color: #fff0f0">&quot;.out&quot;</span>, <span style="background-color: #fff0f0">&quot;w&quot;</span>, stdout);
+
+	<span style="color: #333399; font-weight: bold">int</span> n; scanf(<span style="background-color: #fff0f0">&quot;%d&quot;</span>, <span style="color: #333333">&amp;</span>n);
+	vector <span style="color: #333333">&lt;</span>Event<span style="color: #333333">&gt;</span> e;
+	vector <span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> X, Y;
+	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; <span style="color: #333333">++</span>i) {
+		<span style="color: #333399; font-weight: bold">int</span> x1, y1, x2, y2;
+		scanf(<span style="background-color: #fff0f0">&quot;%d%d%d%d&quot;</span>, <span style="color: #333333">&amp;</span>x1, <span style="color: #333333">&amp;</span>y1, <span style="color: #333333">&amp;</span>x2, <span style="color: #333333">&amp;</span>y2);
+		X.push_back(x1); X.push_back(x2);
+		Y.push_back(y1); Y.push_back(y2);
+		e.push_back(Event(y1, y2, x1, <span style="color: #0000DD; font-weight: bold">0</span>));
+		e.push_back(Event(y1, y2, x2, <span style="color: #0000DD; font-weight: bold">1</span>));
+	}
+	sort(all(X)); sort(all(Y));
+	X.resize(unique(all(X)) <span style="color: #333333">-</span> X.begin());
+	Y.resize(unique(all(Y)) <span style="color: #333333">-</span> Y.begin());
+	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">&amp;</span>it <span style="color: #333333">:</span> e) {
+		it.y <span style="color: #333333">=</span> lower_bound(all(X), it.y) <span style="color: #333333">-</span> X.begin() <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+		it.l <span style="color: #333333">=</span> lower_bound(all(Y), it.l) <span style="color: #333333">-</span> Y.begin() <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+		it.r <span style="color: #333333">=</span> lower_bound(all(Y), it.r) <span style="color: #333333">-</span> Y.begin() <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+	}
+	<span style="color: #333399; font-weight: bold">int</span> cnt <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, xx <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, yy <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+	sort(all(e));
+	build(<span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">1</span>, k);
+	<span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">auto</span> cur <span style="color: #333333">:</span> e) {
+		<span style="color: #008800; font-weight: bold">auto</span> g <span style="color: #333333">=</span> get(cur.l, cur.r);
+		<span style="color: #888888">// cerr &lt;&lt; g.first &lt;&lt; &quot; &quot; &lt;&lt; g.second &lt;&lt; &quot; &quot; &lt;&lt; cur.y &lt;&lt; &quot; &quot; &lt;&lt; cur.l &lt;&lt; &quot; &quot; &lt;&lt; cur.r &lt;&lt; endl;</span>
+		<span style="color: #008800; font-weight: bold">if</span> (g.first <span style="color: #333333">&gt;</span> cnt) {
+			cnt <span style="color: #333333">=</span> g.first;
+			xx <span style="color: #333333">=</span> cur.y;
+			yy <span style="color: #333333">=</span> g.second;
+		}
+		<span style="color: #008800; font-weight: bold">if</span> (<span style="color: #333333">!</span>cur.closing)
+			update(cur.l, cur.r, <span style="color: #0000DD; font-weight: bold">1</span>);
+		<span style="color: #008800; font-weight: bold">else</span>
+			<span style="color: #0066BB; font-weight: bold">update</span>(cur.l, cur.r, <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>);
+	}
+	<span style="color: #888888">// cerr &lt;&lt; xx &lt;&lt; &quot; &quot; &lt;&lt; yy &lt;&lt; endl;</span>
+	printf(<span style="background-color: #fff0f0">&quot;%d</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">%d %d</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>, cnt, X[xx <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>], Y[yy <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>]);
+	<span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+
+            <p>F: Build the Fence</p>
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#pragma comment(linker, &quot;/stack:20000000&quot;)</span>
+<span style="color: #557799">#pragma GCC optimize(&quot;Ofast&quot;)</span>
+<span style="color: #557799">#pragma GCC target(&quot;sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx&quot;)</span>
+
+<span style="color: #557799">#include &lt;stdio.h&gt;</span>
+<span style="color: #557799">#include &lt;bits/stdc++.h&gt;</span>
+<span style="color: #557799">#include &lt;x86intrin.h&gt;</span>
+<span style="color: #557799">#include &lt;ext/pb_ds/assoc_container.hpp&gt;</span>
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> __gnu_pbds;
+<span style="color: #008800; font-weight: bold">template</span> <span style="color: #333333">&lt;</span><span style="color: #008800; font-weight: bold">typename</span> T<span style="color: #333333">&gt;</span> <span style="color: #008800; font-weight: bold">using</span> ordered_set <span style="color: #333333">=</span> tree<span style="color: #333333">&lt;</span>T, null_type, std<span style="color: #333333">::</span>less<span style="color: #333333">&lt;</span>T<span style="color: #333333">&gt;</span>, rb_tree_tag, tree_order_statistics_node_update<span style="color: #333333">&gt;</span>;
+<span style="color: #008800; font-weight: bold">template</span> <span style="color: #333333">&lt;</span><span style="color: #008800; font-weight: bold">typename</span> T1, <span style="color: #008800; font-weight: bold">typename</span> T2<span style="color: #333333">&gt;</span> <span style="color: #008800; font-weight: bold">using</span> ordered_map <span style="color: #333333">=</span> tree<span style="color: #333333">&lt;</span>T1, T2, std<span style="color: #333333">::</span>less<span style="color: #333333">&lt;</span>T1<span style="color: #333333">&gt;</span>, rb_tree_tag, tree_order_statistics_node_update<span style="color: #333333">&gt;</span>;
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+
+<span style="color: #557799">#define pb push_back</span>
+<span style="color: #557799">#define ppb pop_back</span>
+<span style="color: #557799">#define mp make_pair</span>
+<span style="color: #557799">#define fs first</span>
+<span style="color: #557799">#define sc second</span>
+<span style="color: #557799">#define abs(a) ((a) &lt; 0 ? -(a) : (a))</span>
+<span style="color: #557799">#define sqr(a) ((a) * (a))</span>
+
+<span style="color: #008800; font-weight: bold">typedef</span> <span style="color: #333399; font-weight: bold">unsigned</span> <span style="color: #333399; font-weight: bold">int</span> uint;
+<span style="color: #008800; font-weight: bold">typedef</span> <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> ll;
+<span style="color: #008800; font-weight: bold">typedef</span> <span style="color: #333399; font-weight: bold">unsigned</span> <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> ull;
+
+<span style="color: #008800; font-weight: bold">inline</span> pair<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">bool</span>, <span style="color: #333399; font-weight: bold">bool</span><span style="color: #333333">&gt;</span>, pair<span style="color: #333333">&lt;</span>string, <span style="color: #333399; font-weight: bold">bool</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> useinout();
+
+<span style="color: #557799">#ifdef SOL</span>
+<span style="color: #333399; font-weight: bold">double</span> starttime;
+<span style="color: #557799">#endif</span>
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">initialization</span>() {
+<span style="color: #557799">#ifdef SOL</span>
+    starttime <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1000.</span> <span style="color: #333333">*</span> clock() <span style="color: #333333">/</span> CLOCKS_PER_SEC;
+    <span style="color: #008800; font-weight: bold">if</span> (useinout().fs.fs)
+        freopen(<span style="background-color: #fff0f0">&quot;input.txt&quot;</span>, <span style="background-color: #fff0f0">&quot;r&quot;</span>, stdin);
+    <span style="color: #008800; font-weight: bold">if</span> (useinout().fs.sc)
+        freopen(<span style="background-color: #fff0f0">&quot;output.txt&quot;</span>, <span style="background-color: #fff0f0">&quot;w&quot;</span>, stdout);
+<span style="color: #557799">#else</span>
+    srand(__rdtsc());
+    <span style="color: #008800; font-weight: bold">const</span> string file <span style="color: #333333">=</span> useinout().sc.fs;
+    <span style="color: #008800; font-weight: bold">if</span> (<span style="color: #333333">!</span>file.empty()) {
+        freopen((file <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;.in&quot;</span>).c_str(), <span style="background-color: #fff0f0">&quot;r&quot;</span>, stdin);
+        freopen((file <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&quot;.out&quot;</span>).c_str(), <span style="background-color: #fff0f0">&quot;w&quot;</span>, stdout);
+    } <span style="color: #008800; font-weight: bold">else</span>
+    <span style="color: #008800; font-weight: bold">if</span>(useinout().sc.sc) {
+        freopen(<span style="background-color: #fff0f0">&quot;input.txt&quot;</span>, <span style="background-color: #fff0f0">&quot;r&quot;</span>, stdin);
+        freopen(<span style="background-color: #fff0f0">&quot;output.txt&quot;</span>, <span style="background-color: #fff0f0">&quot;w&quot;</span>, stdout);
+    }
+<span style="color: #557799">#endif</span>
+}
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">solution</span>();
+
+<span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">finish</span>(<span style="color: #333399; font-weight: bold">int</span> exitval) {
+    fflush(stdout);
+<span style="color: #557799">#ifdef SOL</span>
+    fprintf(stderr, <span style="background-color: #fff0f0">&quot;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">-----------------</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">exit value: %d</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">time: %.3lf ms</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">-----------------</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>, exitval, <span style="color: #6600EE; font-weight: bold">1000.</span> <span style="color: #333333">*</span> clock() <span style="color: #333333">/</span> CLOCKS_PER_SEC <span style="color: #333333">-</span> starttime);
+<span style="color: #557799">#endif</span>
+}
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    initialization();
+    finish(solution());
+    <span style="color: #008800; font-weight: bold">return</span> (<span style="color: #0000DD; font-weight: bold">0</span>);
+}
+
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">double</span> eps <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1e-9</span>;
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> mod <span style="color: #333333">=</span> (<span style="color: #333399; font-weight: bold">int</span>) <span style="color: #6600EE; font-weight: bold">1e+9</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">7</span>;
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">double</span> pi <span style="color: #333333">=</span> acos(<span style="color: #333333">-</span><span style="color: #6600EE; font-weight: bold">1.</span>);
+<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> maxn <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">100100</span>;
+
+<span style="color: #333399; font-weight: bold">double</span> <span style="color: #0066BB; font-weight: bold">dist</span>(pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> a, pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> b) {
+    <span style="color: #008800; font-weight: bold">return</span> sqrt(sqr(a.fs <span style="color: #333333">-</span> b.fs) <span style="color: #333333">+</span> sqr(a.sc <span style="color: #333333">-</span> b.sc));
+}
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">pl</span>(pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> a, pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> b, pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> c) {
+    <span style="color: #008800; font-weight: bold">return</span> (a.fs <span style="color: #333333">-</span> b.fs) <span style="color: #333333">*</span> (a.sc <span style="color: #333333">+</span> b.sc) <span style="color: #333333">+</span> (b.fs <span style="color: #333333">-</span> c.fs) <span style="color: #333333">*</span> (b.sc <span style="color: #333333">+</span> c.sc) <span style="color: #333333">+</span> (c.fs <span style="color: #333333">-</span> a.fs) <span style="color: #333333">*</span> (c.sc <span style="color: #333333">+</span> a.sc);
+}
+
+vector<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> convex_hull(vector<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> v) {
+    sort(v.begin(), v.end());
+    <span style="color: #008800; font-weight: bold">if</span>(v.size() <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">2</span>) <span style="color: #008800; font-weight: bold">return</span> v;
+    vector<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> up, dw;
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> v.size(); i<span style="color: #333333">++</span>) {
+        <span style="color: #008800; font-weight: bold">while</span>(up.size() <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">&amp;&amp;</span> pl(up[up.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span>].fs, up[up.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>].fs, v[i].fs) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">0</span>)
+            up.ppb();
+        up.pb(v[i]);
+    }
+    up.ppb();
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> v.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i<span style="color: #333333">--</span>) {
+        <span style="color: #008800; font-weight: bold">while</span>(dw.size() <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">&amp;&amp;</span> pl(dw[dw.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span>].fs, dw[dw.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>].fs, v[i].fs) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">0</span>)
+            dw.ppb();
+        dw.pb(v[i]);
+    }
+    dw.ppb();
+    up.insert(up.end(), dw.begin(), dw.end());
+    <span style="color: #008800; font-weight: bold">return</span> up;
+}
+
+<span style="color: #333399; font-weight: bold">void</span> solve() {
+    vector<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> v;
+    <span style="color: #333399; font-weight: bold">int</span> n;
+    scanf(<span style="background-color: #fff0f0">&quot;%d&quot;</span>, <span style="color: #333333">&amp;</span>n);
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> x, y;
+        scanf(<span style="background-color: #fff0f0">&quot;%d%d&quot;</span>, <span style="color: #333333">&amp;</span>x, <span style="color: #333333">&amp;</span>y);
+        v.pb(mp(mp(y, x), i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>));
+    }
+    v <span style="color: #333333">=</span> convex_hull(v);
+    reverse(v.begin() <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, v.end());
+    <span style="color: #333399; font-weight: bold">double</span> len <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    v.pb(v[<span style="color: #0000DD; font-weight: bold">0</span>]);
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> (<span style="color: #333399; font-weight: bold">int</span>)v.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; i<span style="color: #333333">++</span>) {
+        len <span style="color: #333333">+=</span> dist(v[i].fs, v[i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>].fs);
+    }
+    v.ppb();
+    printf(<span style="background-color: #fff0f0">&quot;%.2lf</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>, len);
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> v.size(); i<span style="color: #333333">++</span>) {
+        printf(<span style="background-color: #fff0f0">&quot;%d%c&quot;</span>, v[i].sc, <span style="background-color: #fff0f0">&quot; </span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>[i <span style="color: #333333">==</span> v.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>]);
+    }
+    printf(<span style="background-color: #fff0f0">&quot;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>);
+}
+
+<span style="color: #333399; font-weight: bold">int</span> solution() {
+
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    scanf(<span style="background-color: #fff0f0">&quot;%d&quot;</span>, <span style="color: #333333">&amp;</span>t);
+    <span style="color: #008800; font-weight: bold">for</span>(; t<span style="color: #333333">--</span>; ) {
+        solve();
+    }
+
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+
+<span style="color: #008800; font-weight: bold">inline</span> pair<span style="color: #333333">&lt;</span>pair<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">bool</span>, <span style="color: #333399; font-weight: bold">bool</span><span style="color: #333333">&gt;</span>, pair<span style="color: #333333">&lt;</span>string, <span style="color: #333399; font-weight: bold">bool</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> useinout() {
+    <span style="color: #008800; font-weight: bold">return</span> (mp(mp(<span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">0</span>), mp(<span style="background-color: #fff0f0">&quot;&quot;</span>, <span style="color: #0000DD; font-weight: bold">0</span>)));
+}
+
+<span style="color: #888888">//by Andrey Kim</span>
+</pre></div>
+
+
+            </pre>
+        </div>
+    </body>
+</html>

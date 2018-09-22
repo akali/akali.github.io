@@ -1,7 +1,8 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #151515 url("../images/bkg.png") 0 0;
+	background: #151515;
+	/*background: #151515 url("../images/bkg.png") 0 0;*/
 	color: #eaeaea;
 	font: 16px;
 	line-height: 1.5;
@@ -62,11 +63,6 @@ a {
 	color: white;
 }
 
-/*a:link, a:visited {
-	color: white;
-}*/
-
-
 .linear-wipe {
 }
 
@@ -75,16 +71,16 @@ a>i:after {
 }
 
 a>i {
-  text-align: center;
-  
+	text-align: center;
+
 	background: linear-gradient(64deg, #32CD32, #DF45FE 12%, #4169E1);
-  background-size: 200% auto;
-  
-  background-clip: text;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
+	background-size: 200% auto;
+
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
 	-webkit-animation: AnimationName 7s ease infinite;
 	-moz-animation: AnimationName 7s ease infinite;
 	-o-animation: AnimationName 7s ease infinite;
@@ -101,8 +97,16 @@ a>i {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
+}
+
+.bottom {
+	width: 100%;
+	height: 95%;
+	position: absolute;
+	display: flex;
+	flex-direction: column-reverse;
 }
 
 .center {

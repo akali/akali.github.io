@@ -1,3 +1,0 @@
-Student{name='Kali', surname='Aisultan', score=100}A
-Student{name='Yelibay', surname='Nuptebek', score=90}A
-Student{name='Chrome', surname='Bay', score=51}F

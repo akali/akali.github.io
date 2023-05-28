@@ -1,0 +1,10 @@
+theme: "PaperMod"
+params:
+    homeInfoParams:
+        Title: Aisultan Kali
+        Content: Software Engineer/Site Reliability Engineer at Google.
+    socialIcons:
+        - name: github
+          url: "https://github.com/akali"
+        - name: linkedin
+          url: "https://www.linkedin.com/in/aisultan-k-90257191/"

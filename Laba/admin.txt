@@ -1,8 +1,0 @@
-Thu Nov 02 15:48:43 ALMT 2017 Admin logged in
-Thu Nov 02 15:48:57 ALMT 2017 Admin created Textbook{title='myTextBook', isbn='myISBN', author='Author'}
-Thu Nov 02 15:49:17 ALMT 2017 Admin created Instructor{firstName='Pakita', lastName='Shamoi', department='FIT', email='pakita883@gmail.com'}
-Thu Nov 02 15:49:27 ALMT 2017 Admin created Course{title='OOP', instructor=Instructor{firstName='Pakita', lastName='Shamoi', department='FIT', email='pakita883@gmail.com'}, textbook=Textbook{title='myTextBook', isbn='myISBN', author='Author'}}
-Thu Nov 02 15:55:32 ALMT 2017 Admin logged in
-Thu Nov 02 15:55:39 ALMT 2017 Admin created Textbook{title='title', isbn='tiel', author='asdf'}
-Thu Nov 02 15:55:42 ALMT 2017 Admin created Instructor{firstName='asdf', lastName='asdf', department='asdf', email='asdf'}
-Thu Nov 02 15:55:50 ALMT 2017 Admin created Course{title='fauisdn', instructor=Instructor{firstName='name', lastName='surname', department='depa', email='email'}, textbook=Textbook{title='title', isbn='tiel', author='asdf'}}
